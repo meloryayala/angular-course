@@ -1,0 +1,72 @@
+<section>
+  <h2>Template</h2>
+  <!--
+  Template binding
+  Data binding keeps updates on the template of the HTML template.
+  -->
+  <h3>Text interpolation</h3>
+  <p>{{name}} - {{age}}</p>
+  <p>{{ 1 + 1 }}</p>
+  <p>{{ age + 1}}</p>
+  <p>{{ age > 18 }}</p>
+  <p>{{ age > 18 ? 'Adult' : 'Underage' }}</p>
+  <p>{{ condition }}</p>
+  <hr/>
+
+  <h3>Property binding</h3>
+  <button [disabled]="isDisabled">Button</button>
+  <div>
+    <img [src]="srcValue" alt="">
+  </div>
+  <hr/>
+
+  <h3>Attribute binding</h3>
+  <p [attr.title]="name" [attr.aria-label]="name">Melory</p>
+  <hr/>
+
+  <h3>Class & Style binding</h3>
+  <p [class.pink]="true">{{name}}</p>
+  <p [class.pink]="age < 18">{{ name }}</p>
+  <p [class.green]="name !== 'Melory'">{{name}}</p>
+  <p [style.text-transform]="'uppercase'">{{name}}</p>
+  <!--  This type of binding is not working on the new version 17-->
+  <!--<p [style.color]="customStyle">{{name}}</p>-->
+  <hr/>
+
+  <h3>Event biding</h3>
+  <button (click)="sum()">+</button>
+  <button (click)="sub()">-</button>
+  <p [class.green]="age > 26" [class.pink]="age <= 26">{{age}}</p>
+  <input (keydown.shift.t)="onkeydown($event)" type="text"/>
+  <div
+    style="
+      background-color: hotpink;
+      height: 300px;
+      width: 300px;
+      margin: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      "
+    (mousemove)="onMouseEvent($event)"
+  >
+    X: {{valueX}} | Y: {{valueY}}
+  </div>
+  <hr/>
+
+  <h3>Two-way biding</h3>
+  <input [(ngModel)]="name" type="text">
+  <p>
+    {{name}}
+  </p>
+  <hr/>
+
+  <h3>Attribute directives</h3>
+  <div [ngClass]="{ 'pink': true }">Conditional classes</div>
+  <div [ngStyle]="{
+  color: age > 18 ? 'greenyellow' : 'hotpink'
+  }">Dynamic style
+  </div>
+  <hr/>
+
+</section>
