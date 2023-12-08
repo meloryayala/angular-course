@@ -10,6 +10,7 @@ import {
 import {
   TemplateDeferrableViewsComponent
 } from "./components/template/template-deferrable-views/template-deferrable-views.component";
+import {SignalsComponent} from "./components/signals/signals.component";
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import {
     TemplateVariableComponent,
     TemplateControlFlowComponent,
     TemplateDeferrableViewsComponent,
+    SignalsComponent,
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
@@ -30,7 +32,8 @@ import {
           <!--          <app-template-binding/>-->
           <!--          <app-template-variable/>-->
           <!--          <app-template-control-flow/>-->
-          <app-template-deferrable-views/>
+          <!--          <app-template-deferrable-views/>-->
+          <app-signals/>
 
       </div>
   `,

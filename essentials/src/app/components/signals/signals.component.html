@@ -1,0 +1,19 @@
+<h3>Signals</h3>
+<!--
+ Signals
+ is a reactive value and is a producer that notify consumers(dependents)
+ A signal is a wrapper around a value that notifies interested consumers when that value changes.
+ Signals can contain any value, from simple primitives to complex data structures.
+-->
+
+<p>{{firstName()}} {{lastName()}}</p>
+<p>Full Name:  {{fullName()}}</p>
+
+<ul>
+  @for(item of array(); track item){
+  <li>{{item}}</li>
+  }
+</ul>
+
+<button (click)="updateName()">Update Name</button>
+<button (click)="updateArray()">Update Array</button>
