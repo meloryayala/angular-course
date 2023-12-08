@@ -4,6 +4,9 @@ import { RouterOutlet } from '@angular/router';
 
 import {TemplateBindingComponent} from "./components/template/template-binding/template-binding.component";
 import {TemplateVariableComponent} from "./components/template/template-variable/template-variable.component";
+import {
+  TemplateControlFlowComponent
+} from "./components/template/template-control-flow/template-control-flow.component";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +16,7 @@ import {TemplateVariableComponent} from "./components/template/template-variable
     RouterOutlet,
     TemplateBindingComponent,
     TemplateVariableComponent,
+    TemplateControlFlowComponent,
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
@@ -20,13 +24,13 @@ import {TemplateVariableComponent} from "./components/template/template-variable
       <div class="theme-dark">
 
           <!--          <app-template-binding/>-->
-          <app-template-variable/>
-
+          <!--          <app-template-variable/>-->
+          <app-template-control-flow/>
 
       </div>
   `,
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = '1-intro';
+  title = 'Angular course';
 }

@@ -1,0 +1,143 @@
+<section>
+  <h2>Control flow v17</h2>
+  <!--
+  Control flow / previous 17 Structural directive
+  Is a new way of writing if statements, if-else statements, switch-case statements and for loops.
+  -->
+
+  <h3>IF</h3>
+    @if(isTrue) {
+      Yes 1 is equal 1
+      <p>Meloca</p>
+      <p>Ayala</p>
+    } @else {
+      Não incorreto
+    }
+  <hr/>
+
+  <h4>IF & FOR async</h4>
+  @if(loadingNames$ | async; as names) {
+    <ul>
+      @for (name of names; track name) {
+        <li>{{name}}</li>
+      }
+    </ul>
+  } @else {
+    Loading...
+  }
+  <hr/>
+
+  <h4>FOR async</h4>
+    @for (name of loadingNames$ | async; track name) {
+      <li>{{name}}</li>
+    }
+  <hr/>
+
+  <h4>FOR values</h4>
+  @for (item of items; track item;
+    let i = $index;
+    let c = $count;
+    let f = $first;
+    let l = $last;
+    let e = $even;
+    let o = $odd;;
+  ) {
+    <div style="border: 1px solid black; padding: 50px; margin-bottom: 10px">
+      <p>{{item.name}}</p>
+      <p>index - {{i}}</p>
+      <p>count - {{c}}</p>
+      <p>first - {{f}}</p>
+      <p>last - {{l}}</p>
+      <p>even - {{e}}</p>
+      <p>odd - {{o}}</p>
+    </div>
+  }
+  <input #name type="text">
+  <button (click)="addNewName(name.value)">Add name</button>
+  <hr/>
+
+  <h4>FOR empty</h4>
+    <ul>
+      @for(item of items; track item.name) {
+        <li>
+        {{item.name}}
+        </li>
+      } @empty {
+        <li>No content</li>
+      }
+    </ul>
+  <hr/>
+
+  <h4>SWITCH CASE</h4>
+    @switch(switchCondition) {
+      @case('A') {
+        <p>Yes, letter is 'A'</p>
+      }
+      @case('B') {
+        <p>Yes, letter is 'B'</p>
+      }
+      @default {
+        <p>The data was not found</p>
+      }
+  }
+  <hr/>
+
+  <!-- Older versions-->
+  <h2>Older versions</h2>
+  <h3>IF ( old )</h3>
+  <ng-container *ngIf="loadingNames$ | async as data; else loading">
+    <ul>
+      <ng-container *ngFor="let item of data; trackBy: trackByFn">
+        <li>{{ item }}</li>
+      </ng-container>
+    </ul>
+  </ng-container>
+  <ng-template #loading> <p>Loading...</p> </ng-template>
+  <hr>
+
+  <h3>FOR ( old )</h3>
+  <ng-container
+    *ngFor="
+      let item of items;
+      let i = index;
+      let c = count;
+      let f = first;
+      let l = last;
+      let e = even;
+      let o = odd;
+      trackBy: trackByFn
+    "
+  >
+    <p>{{ item.name }}</p>
+    <p>index - {{ i }}</p>
+    <p>count - {{ c }}</p>
+    <p>first - {{ f }}</p>
+    <p>last - {{ l }}</p>
+    <p>even - {{ e }}</p>
+    <p>odd - {{ o }}</p>
+  </ng-container>
+  <hr />
+
+  <ul>
+    <ng-container *ngIf="items.length === 0; else itemsExist">
+      <li>Does not contain values</li>
+    </ng-container>
+    <ng-template #itemsExist>
+      <ng-container *ngFor="let item of items">
+        <li>
+          {{item.name}}
+        </li>
+      </ng-container>
+    </ng-template>
+  </ul>
+  <hr>
+
+  <h3>SWITCH CASE ( old )</h3>
+  <div [ngSwitch]="'A'">
+    <p *ngSwitchCase="'A'">Conteúdo A</p>
+    <p *ngSwitchCase="'B'">Conteúdo B</p>
+    <p *ngSwitchDefault>Conteúdo Default</p>
+  </div>
+  <hr>
+
+</section>
