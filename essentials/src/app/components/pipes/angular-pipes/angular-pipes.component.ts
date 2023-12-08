@@ -10,11 +10,12 @@ import {
   UpperCasePipe
 } from "@angular/common";
 import {delay, Observable, of} from "rxjs";
+import {CustomStringPipe} from "../../../pipes/custom-string.pipe";
 
 @Component({
   selector: 'app-angular-pipes',
   standalone: true,
-  imports: [DatePipe, UpperCasePipe, LowerCasePipe, JsonPipe, AsyncPipe, CurrencyPipe, PercentPipe, DecimalPipe],
+  imports: [DatePipe, UpperCasePipe, LowerCasePipe, JsonPipe, AsyncPipe, CurrencyPipe, PercentPipe, DecimalPipe, CustomStringPipe],
   templateUrl: './angular-pipes.component.html',
   styleUrl: './angular-pipes.component.scss',
 })

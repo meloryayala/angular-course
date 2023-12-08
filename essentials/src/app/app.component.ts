@@ -26,7 +26,7 @@ import {AngularPipesComponent} from "./components/pipes/angular-pipes/angular-pi
     TemplateDeferrableViewsComponent,
     SignalsComponent,
     ParentComponent,
-    AngularPipesComponent,
+    AngularPipesComponent
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
