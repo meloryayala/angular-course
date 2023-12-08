@@ -7,6 +7,9 @@ import {TemplateVariableComponent} from "./components/template/template-variable
 import {
   TemplateControlFlowComponent
 } from "./components/template/template-control-flow/template-control-flow.component";
+import {
+  TemplateDeferrableViewsComponent
+} from "./components/template/template-deferrable-views/template-deferrable-views.component";
 
 @Component({
   selector: 'app-root',
@@ -17,6 +20,7 @@ import {
     TemplateBindingComponent,
     TemplateVariableComponent,
     TemplateControlFlowComponent,
+    TemplateDeferrableViewsComponent,
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
@@ -25,7 +29,8 @@ import {
 
           <!--          <app-template-binding/>-->
           <!--          <app-template-variable/>-->
-          <app-template-control-flow/>
+          <!--          <app-template-control-flow/>-->
+          <app-template-deferrable-views/>
 
       </div>
   `,

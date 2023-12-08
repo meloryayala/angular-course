@@ -1,0 +1,81 @@
+<section>
+  <h4>Deferrable views - is like lazy loading</h4>
+
+  <!--
+  Defer (condition):
+    -> on:
+      idle - by default if no condition added
+      timer(5s) - like timeout
+      viewport - good for images, heavy components
+      interaction(trigger) - reference another element
+      hover - on mouse enter
+      immediate - after rendering the page
+      prefetch also on - load already before the condition is activated
+
+   -> when:
+      a boolean condition can be used
+
+     *if added more conditions on & when, it always or command
+
+
+  Placeholder (condition):
+    -> minimum 5s - awaits the time
+
+  Loading (condition)
+  Loading is not awaiting for a service or api call, Loading means downloading the chunks
+    -> after 150ms - if the chunck download takes more than [this] time
+    -> minimum 2s - than set minimum await time to [this]
+
+-->
+
+  <h4>Defer Condition ON</h4>
+  @defer (on interaction) {
+  <app-new />
+  } @placeholder {
+  <p>Display something before it is loading</p>
+  } @loading {
+  <p>Display while it is loading</p>
+  } @error {
+  <p>Displayed after loaded - Loading failed :(</p>
+  }
+  <hr />
+
+  <h4>Defer Condition WHEN</h4>
+  <button (click)="isTrue = true">Add true</button>
+
+  <!--  @defer (when loadingNames$ | async) {-->
+  @defer (when isTrue) {
+    <app-new />
+  } @placeholder {
+    <p>Display something before it is loading</p>
+  } @loading {
+    <p>Display while it is loading</p>
+  } @error {
+    <p>Displayed after loaded - Loading failed :(</p>
+  }
+  <hr />
+
+  <h4>Placeholder Condition MINIMUM</h4>
+  @defer {
+    <app-new />
+  } @placeholder(minimum 5s) {
+    <p>Display something before it is loading</p>
+  } @loading {
+    <p>Display while it is loading</p>
+  } @error {
+    <p>Displayed after loaded - Loading failed :(</p>
+  }
+  <hr />
+
+  <h4>Loading Condition AFTER & MINIMUM</h4>
+  @defer {
+    <app-new />
+  } @placeholder {
+    <p>Display something before it is loading</p>
+  } @loading (after 150ms; minimum 2s) {
+    <p>Display while it is loading</p>
+  } @error {
+    <p>Displayed after loaded - Loading failed :(</p>
+  }
+
+</section>
