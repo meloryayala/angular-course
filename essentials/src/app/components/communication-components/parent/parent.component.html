@@ -1,0 +1,16 @@
+<h3>Communication between components</h3>
+
+<!--
+Input
+Send data up to down
+-->
+<app-input inputName="Meli" inputNameSignal="Melory"/>
+<app-input [inputName]="name()" inputNameSignal="Melory"/>
+
+<!--
+Output
+Send data from down to up
+I must to have an event emitter
+-->
+<app-output (outputNameSignal)="outputNameSignal.set($event)" />
+<p>{{outputNameSignal()}}</p>
