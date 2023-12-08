@@ -12,6 +12,7 @@ import {
 } from "./components/template/template-deferrable-views/template-deferrable-views.component";
 import {SignalsComponent} from "./components/signals/signals.component";
 import {ParentComponent} from "./components/communication-components/parent/parent.component";
+import {AngularPipesComponent} from "./components/pipes/angular-pipes/angular-pipes.component";
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ import {ParentComponent} from "./components/communication-components/parent/pare
     TemplateDeferrableViewsComponent,
     SignalsComponent,
     ParentComponent,
+    AngularPipesComponent,
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
@@ -36,7 +38,8 @@ import {ParentComponent} from "./components/communication-components/parent/pare
           <!--          <app-template-control-flow/>-->
           <!--          <app-template-deferrable-views/>-->
           <!--          <app-signals/>-->
-          <app-parent/>
+          <!--          <app-parent/>-->
+          <app-angular-pipes/>
 
       </div>
   `,

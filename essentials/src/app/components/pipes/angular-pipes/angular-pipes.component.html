@@ -1,0 +1,11 @@
+<h3>Pipes</h3>
+<ul>
+  <li>Uppercase: {{ name() | uppercase }}</li>
+  <li>Lowercase: {{ lastName() | lowercase }}</li>
+  <li>Date: {{ date() | date: 'dd/MM/yyyy' }}</li>
+  <li>Json: {{json() | json }}</li>
+  <li>Async: {{ loadingNames$ | async }}</li>
+  <li>Currency: {{ 200.50 | currency: 'EUR' }}</li>
+  <li>Percent: {{ 2000.5 | number: "1.1-2" }}</li>
+  <li>Number: {{ 0.2 | percent: "1.0-4" }}</li>
+</ul>
