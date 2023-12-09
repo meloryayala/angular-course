@@ -13,6 +13,7 @@ import {
 import {SignalsComponent} from "./components/signals/signals.component";
 import {ParentComponent} from "./components/communication-components/parent/parent.component";
 import {AngularPipesComponent} from "./components/pipes/angular-pipes/angular-pipes.component";
+import {TemplateDrivenFormsComponent} from "./components/forms/template-driven-forms/template-driven-forms.component";
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,8 @@ import {AngularPipesComponent} from "./components/pipes/angular-pipes/angular-pi
     TemplateDeferrableViewsComponent,
     SignalsComponent,
     ParentComponent,
-    AngularPipesComponent
+    AngularPipesComponent,
+    TemplateDrivenFormsComponent
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
@@ -39,7 +41,8 @@ import {AngularPipesComponent} from "./components/pipes/angular-pipes/angular-pi
           <!--          <app-template-deferrable-views/>-->
           <!--          <app-signals/>-->
           <!--          <app-parent/>-->
-          <app-angular-pipes/>
+          <!--          <app-angular-pipes/>-->
+          <app-template-driven-forms/>
 
       </div>
   `,
