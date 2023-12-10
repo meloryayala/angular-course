@@ -15,6 +15,7 @@ import {ParentComponent} from "./components/communication-components/parent/pare
 import {AngularPipesComponent} from "./components/pipes/angular-pipes/angular-pipes.component";
 import {TemplateDrivenFormsComponent} from "./components/forms/template-driven-forms/template-driven-forms.component";
 import {ReactiveFormsComponent} from "./components/forms/reactive-forms/reactive-forms.component";
+import {ContentComponent} from "./components/content/content.component";
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,8 @@ import {ReactiveFormsComponent} from "./components/forms/reactive-forms/reactive
     ParentComponent,
     AngularPipesComponent,
     TemplateDrivenFormsComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    ContentComponent
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
@@ -45,7 +47,17 @@ import {ReactiveFormsComponent} from "./components/forms/reactive-forms/reactive
           <!--          <app-parent/>-->
           <!--          <app-angular-pipes/>-->
           <!--          <app-template-driven-forms/>-->
-          <app-reactive-forms/>
+          <!--          <app-reactive-forms/>-->
+          <app-content>
+            <header id="header">
+              <p>my header</p>
+            </header>
+            <p text>Text</p>
+            <p>Text 2</p>
+            <footer class="footer">
+              <p>my footer</p>
+            </footer>
+          </app-content>
 
       </div>
   `,
