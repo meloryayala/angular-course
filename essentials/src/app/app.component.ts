@@ -16,6 +16,7 @@ import {AngularPipesComponent} from "./components/pipes/angular-pipes/angular-pi
 import {TemplateDrivenFormsComponent} from "./components/forms/template-driven-forms/template-driven-forms.component";
 import {ReactiveFormsComponent} from "./components/forms/reactive-forms/reactive-forms.component";
 import {ContentComponent} from "./components/content/content.component";
+import {HostElementsComponent} from "./components/host-elements/host-elements.component";
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,8 @@ import {ContentComponent} from "./components/content/content.component";
     AngularPipesComponent,
     TemplateDrivenFormsComponent,
     ReactiveFormsComponent,
-    ContentComponent
+    ContentComponent,
+    HostElementsComponent
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
@@ -48,16 +50,19 @@ import {ContentComponent} from "./components/content/content.component";
           <!--          <app-angular-pipes/>-->
           <!--          <app-template-driven-forms/>-->
           <!--          <app-reactive-forms/>-->
-          <app-content>
-            <header id="header">
-              <p>my header</p>
-            </header>
-            <p text>Text</p>
-            <p>Text 2</p>
-            <footer class="footer">
-              <p>my footer</p>
-            </footer>
-          </app-content>
+
+          <!--          <app-content>-->
+          <!--            <header id="header">-->
+          <!--              <p>my header</p>-->
+          <!--            </header>-->
+          <!--            <p text>Text</p>-->
+          <!--            <p>Text 2</p>-->
+          <!--            <footer class="footer">-->
+          <!--              <p>my footer</p>-->
+          <!--            </footer>-->
+          <!--          </app-content>-->
+
+        <app-host-elements />
 
       </div>
   `,
