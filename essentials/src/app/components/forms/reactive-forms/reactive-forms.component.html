@@ -1,0 +1,85 @@
+<section>
+  <h3>Reactive forms</h3>
+  <!--
+  Reactive forms
+  Compared to template-driven forms,
+  they are more robust: they're more scalable, reusable, and testable.
+  -->
+
+  <h4>Form control & Form group</h4>
+  <form [formGroup]="profileForm" (ngSubmit)="submit()">
+    <label>
+      Name:
+      <input
+        type="text"
+        formControlName="name"
+      >
+      <p>Value: {{profileForm.value.name}}</p>
+    </label>
+    <hr />
+
+    <div formGroupName="myStacks">
+      <label>
+        Front:
+        <input
+          type="text"
+          formControlName="front"
+        >
+        <p>Value: {{profileForm.value.myStacks?.front}}</p>
+      </label>
+
+      <label>
+        Front:
+        <input
+          type="text"
+          formControlName="back"
+        >
+        <p>Value: {{profileForm.value.myStacks?.back}}</p>
+      </label>
+    </div>
+
+    <button (click)="update()">Update</button>
+    <hr/>
+
+    <h4>Form array dynamic</h4>
+    <label>
+      New food
+      <input
+        #newFood
+        type="text">
+    </label>
+    <button (click)="addMyFavoriteFoods(newFood.value)">Add</button>
+    <br><br>
+
+    <div formArrayName="myFavoriteFoods">
+      @for(food of profileForm.value.myFavoriteFoods; track i; let i = $index) {
+      <label>
+      {{food}}:
+      <input
+      type="text"
+      [formControlName]="i"
+      >
+      </label>
+      <br><br>
+      }
+    </div>
+
+
+    <hr />
+    <h4>[formGroup] = profileForm</h4>
+    <p>Value: {{profileForm.value | json}}</p>
+    <p>Valid: {{profileForm.valid}}</p>
+    <p>Dirty: {{profileForm.dirty}}</p>
+    <p>Touched: {{profileForm.touched}}</p>
+    <hr />
+    <h4>[formControlName] = name</h4>
+    <p>Value: {{profileForm.get('name')?.value}}</p>
+    <p>Valid: {{profileForm.get('name')?.valid}}</p>
+    <p>Dirty: {{profileForm.get('name')?.dirty}}</p>
+    <p>Touched: {{profileForm.get('name')?.touched}}</p>
+    <p>Errors: {{profileForm.get('name')?.errors | json}}</p>
+    <hr />
+
+    <button [disabled]="!profileForm.valid">Submit</button>
+  </form>
+</section>

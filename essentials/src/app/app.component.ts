@@ -14,6 +14,7 @@ import {SignalsComponent} from "./components/signals/signals.component";
 import {ParentComponent} from "./components/communication-components/parent/parent.component";
 import {AngularPipesComponent} from "./components/pipes/angular-pipes/angular-pipes.component";
 import {TemplateDrivenFormsComponent} from "./components/forms/template-driven-forms/template-driven-forms.component";
+import {ReactiveFormsComponent} from "./components/forms/reactive-forms/reactive-forms.component";
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,8 @@ import {TemplateDrivenFormsComponent} from "./components/forms/template-driven-f
     SignalsComponent,
     ParentComponent,
     AngularPipesComponent,
-    TemplateDrivenFormsComponent
+    TemplateDrivenFormsComponent,
+    ReactiveFormsComponent
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
@@ -42,7 +44,8 @@ import {TemplateDrivenFormsComponent} from "./components/forms/template-driven-f
           <!--          <app-signals/>-->
           <!--          <app-parent/>-->
           <!--          <app-angular-pipes/>-->
-          <app-template-driven-forms/>
+          <!--          <app-template-driven-forms/>-->
+          <app-reactive-forms/>
 
       </div>
   `,
