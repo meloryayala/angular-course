@@ -1,17 +1,18 @@
 <section>
   <h3>Services</h3>
-  <!--
-
-  -->
   <app-new/>
 
+  @if(getListTask$(); as data) {
   <ul>
-    @for(task of getTask$ | async; track task.id) {
-    <li>
+    @for(task of data; track task.id) {
+  <li>
     <p>{{task.id}} - {{task.title}}</p>
   </li>
-    } @empty {
-    <li>Loading...</li>
-    }
+  } @empty {
+  <li>Loading...</li>
+  }
   </ul>
+  } @else {
+  <p>Loading...</p>
+  }
 </section>

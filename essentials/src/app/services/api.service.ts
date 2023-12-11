@@ -1,5 +1,5 @@
 import {Injectable, signal} from '@angular/core';
-import {BehaviorSubject, Observable, shareReplay} from "rxjs";
+import {BehaviorSubject, Observable, shareReplay, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
@@ -18,9 +18,15 @@ export class ApiService {
   public name$ = new BehaviorSubject('Melory Ayala $');
 
   constructor(private _http: HttpClient) { }
-  URL = signal(environment.apiTask);
+  #url = signal(environment.apiTask);
+
+  #setListTask = signal<ITask[] | null>(null);
+  public getListTask = this.#setListTask.asReadonly();
 
   public httpListTask$(): Observable<ITask[]>{
-    return this._http.get<ITask[]>(this.URL()).pipe(shareReplay())
+    return this._http.get<ITask[]>(this.#url()).pipe(
+      shareReplay(),
+      tap(res => this.#setListTask.set(res))
+    )
   }
 }

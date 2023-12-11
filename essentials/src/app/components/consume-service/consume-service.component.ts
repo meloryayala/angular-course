@@ -1,7 +1,8 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NewComponent} from "../new/new.component";
-import {ApiService, ITask} from "../../services/api.service";
+import {ApiService} from "../../services/api.service";
 import {AsyncPipe, JsonPipe} from "@angular/common";
+import {toSignal} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-consume-service',
@@ -15,22 +16,16 @@ import {AsyncPipe, JsonPipe} from "@angular/common";
   styleUrl: './consume-service.component.scss'
 })
 export class ConsumeServiceComponent implements OnInit {
-  //Add dependency injection, also works with functions
-  // #apiService = inject(ApiService);
+
   constructor(private _apiService: ApiService) {
   }
 
-  public tasks = signal<null | ITask[]>(null);
-  public getTask$ = this._apiService.httpListTask$();
+  //convert observable to a signal
+  // public getListTask$ = toSignal(this._apiService.getListTask);
+  public getListTask$ = this._apiService.getListTask;
 
   ngOnInit() {
-    this.getTask$.subscribe({
-      next: (next) => {
-        console.log(next)
-        this.tasks.set(next)
-      },
-      error: (error) => console.log(error),
-      complete: () => console.log('complete')
-    })
+    this._apiService.httpListTask$().subscribe();
   }
+
 }
