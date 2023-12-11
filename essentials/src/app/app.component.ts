@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import {ChangeDetectionStrategy, Component, OnInit, signal} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterOutlet} from '@angular/router';
 
 import {TemplateBindingComponent} from "./components/template/template-binding/template-binding.component";
 import {TemplateVariableComponent} from "./components/template/template-variable/template-variable.component";
@@ -17,6 +17,7 @@ import {TemplateDrivenFormsComponent} from "./components/forms/template-driven-f
 import {ReactiveFormsComponent} from "./components/forms/reactive-forms/reactive-forms.component";
 import {ContentComponent} from "./components/content/content.component";
 import {HostElementsComponent} from "./components/host-elements/host-elements.component";
+import {LifeCycleComponent} from "./components/life-cycle/life-cycle.component";
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,8 @@ import {HostElementsComponent} from "./components/host-elements/host-elements.co
     TemplateDrivenFormsComponent,
     ReactiveFormsComponent,
     ContentComponent,
-    HostElementsComponent
+    HostElementsComponent,
+    LifeCycleComponent
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
@@ -62,12 +64,33 @@ import {HostElementsComponent} from "./components/host-elements/host-elements.co
           <!--            </footer>-->
           <!--          </app-content>-->
 
-        <app-host-elements />
+          <!--        <app-host-elements />-->
 
+        @if(boolean) {
+        <app-life-cycle [inputMyNumber]="number()">
+        <p #text>text</p>
+        </app-life-cycle>
+        }
+
+        <button (click)="boolean = !boolean">Destroy component</button>
       </div>
+
   `,
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  title = 'Angular course';
+export class AppComponent implements OnInit {
+  public number = signal(1);
+  public boolean = true;
+
+  //Component initialized
+  // OnInit always run after OnChanges
+  ngOnInit() {
+    setInterval(() => {
+      this.number.update((oldValue) => {
+        return oldValue + 1;
+      })
+    }, 1000);
+  }
+
 }
