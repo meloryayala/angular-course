@@ -1,0 +1,17 @@
+<section>
+  <h3>Services</h3>
+  <!--
+
+  -->
+  <app-new/>
+
+  <ul>
+    @for(task of getTask(); track task.id) {
+    <li>
+    <p>{{task.id}} - {{task.title}}</p>
+  </li>
+    } @empty {
+    <li>Loading...</li>
+    }
+  </ul>
+</section>

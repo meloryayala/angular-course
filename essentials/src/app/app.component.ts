@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 
@@ -18,6 +18,7 @@ import {ReactiveFormsComponent} from "./components/forms/reactive-forms/reactive
 import {ContentComponent} from "./components/content/content.component";
 import {HostElementsComponent} from "./components/host-elements/host-elements.component";
 import {LifeCycleComponent} from "./components/life-cycle/life-cycle.component";
+import {ConsumeServiceComponent} from "./components/consume-service/consume-service.component";
 
 @Component({
   selector: 'app-root',
@@ -36,7 +37,8 @@ import {LifeCycleComponent} from "./components/life-cycle/life-cycle.component";
     ReactiveFormsComponent,
     ContentComponent,
     HostElementsComponent,
-    LifeCycleComponent
+    LifeCycleComponent,
+    ConsumeServiceComponent
   ],
   template: `
       <!--  <router-outlet></router-outlet>-->
@@ -66,31 +68,32 @@ import {LifeCycleComponent} from "./components/life-cycle/life-cycle.component";
 
           <!--        <app-host-elements />-->
 
-        @if(boolean) {
-        <app-life-cycle [inputMyNumber]="number()">
-        <p #text>text</p>
-        </app-life-cycle>
-        }
+          <!--        @if(boolean) {-->
+          <!--        <app-life-cycle [inputMyNumber]="number()">-->
+          <!--        <p #text>text</p>-->
+          <!--        </app-life-cycle>-->
+          <!--        }-->
+          <!--        <button (click)="boolean = !boolean">Destroy component</button>-->
 
-        <button (click)="boolean = !boolean">Destroy component</button>
+          <app-consume-service/>
       </div>
 
   `,
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   public number = signal(1);
   public boolean = true;
 
   //Component initialized
   // OnInit always run after OnChanges
-  ngOnInit() {
-    setInterval(() => {
-      this.number.update((oldValue) => {
-        return oldValue + 1;
-      })
-    }, 1000);
-  }
+  // ngOnInit() {
+  //   setInterval(() => {
+  //     this.number.update((oldValue) => {
+  //       return oldValue + 1;
+  //     })
+  //   }, 1000);
+  // }
 
 }

@@ -48,14 +48,14 @@ export class LifeCycleComponent implements OnChanges,
 
   //RxJs on destroy
   //Example RxJs does not destroy completely if is not unsubscribed in older versions
-  private destroy$ = timer(0, 1000)
-    //Using pipe - takeUntilDestroy is used to destroy completely for v17+
-    .pipe(takeUntilDestroyed())
-    .subscribe({
-    next: (next) => console.log('next', next),
-    error: (error) => console.log('error', error),
-    complete: () => console.log('complete'),
-  })
+  // private destroy$ = timer(0, 1000)
+  //   //Using pipe - takeUntilDestroy is used to destroy completely for v17+
+  //   .pipe(takeUntilDestroyed())
+  //   .subscribe({
+  //   next: (next) => console.log('next', next),
+  //   error: (error) => console.log('error', error),
+  //   complete: () => console.log('complete'),
+  // })
 
   //Initializer
   //The constructor is initialized when the component is created
