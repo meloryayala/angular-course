@@ -3,11 +3,14 @@
   <app-new/>
 
   <h4>Get list</h4>
-  @if(getListTask(); as data) {
+  @if(getTaskList(); as data) {
   <ul>
     @for(task of data; track task.id) {
   <li>
-    <p>{{task.id}} - {{task.title}}</p>
+    <p>
+      {{task.id}} - {{task.title}}
+      <button (click)="httpTaskDelete(task.id)">Delete</button>
+    </p>
   </li>
   } @empty {
   <li>Loading...</li>
@@ -20,5 +23,16 @@
   <h4>Get by Id</h4>
   @if(getTaskId(); as data) {
   {{data.id}} - {{data.title}}
+  } @else {
+  {{ getTaskIdError() }}
   }
+
+  <h4>Post create</h4>
+  <input type="text" #createTitle placeholder="Add title">
+  <button (click)="httpTaskCreate(createTitle.value)">Create</button>
+
+  <h4>Patch update</h4>
+  <input type="text" #updateId placeholder="Add id">
+  <input type="text" #updateTitle placeholder="Add title">
+  <button (click)="httpTaskUpdate(updateId.value, updateTitle.value)">Update</button>
 </section>
