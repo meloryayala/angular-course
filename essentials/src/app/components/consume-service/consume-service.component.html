@@ -2,7 +2,8 @@
   <h3>Services</h3>
   <app-new/>
 
-  @if(getListTask$(); as data) {
+  <h4>Get list</h4>
+  @if(getListTask(); as data) {
   <ul>
     @for(task of data; track task.id) {
   <li>
@@ -14,5 +15,10 @@
   </ul>
   } @else {
   <p>Loading...</p>
+  }
+
+  <h4>Get by Id</h4>
+  @if(getTaskId(); as data) {
+  {{data.id}} - {{data.title}}
   }
 </section>

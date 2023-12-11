@@ -22,10 +22,12 @@ export class ConsumeServiceComponent implements OnInit {
 
   //convert observable to a signal
   // public getListTask$ = toSignal(this._apiService.getListTask);
-  public getListTask$ = this._apiService.getListTask;
+  public getListTask = this._apiService.getListTask;
+  public getTaskId = this._apiService.getTaskId;
 
   ngOnInit() {
     this._apiService.httpListTask$().subscribe();
+    this._apiService.httpTaskId$('IqHJ9r5n6axAzPXGZpcy').subscribe();
   }
 
 }
