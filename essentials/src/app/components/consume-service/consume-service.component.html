@@ -6,7 +6,7 @@
   <app-new/>
 
   <ul>
-    @for(task of getTask(); track task.id) {
+    @for(task of getTask$ | async; track task.id) {
     <li>
     <p>{{task.id}} - {{task.title}}</p>
   </li>
