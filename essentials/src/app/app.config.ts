@@ -1,5 +1,5 @@
 import {ApplicationConfig, LOCALE_ID} from '@angular/core';
-import {provideRouter} from '@angular/router';
+import {provideRouter, withComponentInputBinding, withRouterConfig} from '@angular/router';
 
 import {routes} from './app.routes';
 import localeDe from '@angular/common/locales/de';
@@ -11,10 +11,11 @@ registerLocaleData(localeDe);
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
+    provideRouter(routes, withComponentInputBinding(), withRouterConfig({
+      paramsInheritanceStrategy: 'always',
+    })),
     provideHttpClient(
       withInterceptors([httpInterceptor])
-
     ),
     {provide: LOCALE_ID, useValue: 'de-CH'}
   ]

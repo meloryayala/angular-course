@@ -1,0 +1,33 @@
+<h3>Home</h3>
+
+<a
+  routerLink=""
+  routerLinkActive="active"
+  ariaCurrentWhenActive="page"
+>
+  Home
+</a>
+<br>
+
+<a
+  [routerLink]="['about']"
+  routerLinkActive="active"
+>
+  About
+</a>
+<br>
+
+<a
+  [routerLink]="['products', 1]"
+  routerLinkActive="active"
+>
+  Product 1
+</a>
+<br>
+
+<a
+  [routerLink]="['random']"
+  routerLinkActive="active"
+>
+  Not found
+</a>

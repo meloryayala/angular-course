@@ -41,7 +41,6 @@ import {ConsumeServiceComponent} from "./components/consume-service/consume-serv
     ConsumeServiceComponent
   ],
   template: `
-      <!--  <router-outlet></router-outlet>-->
       <h1>Angular course</h1>
       <div class="theme-dark">
 
@@ -74,10 +73,11 @@ import {ConsumeServiceComponent} from "./components/consume-service/consume-serv
           <!--        </app-life-cycle>-->
           <!--        }-->
           <!--        <button (click)="boolean = !boolean">Destroy component</button>-->
+<!--          <app-consume-service/>-->
 
-          <app-consume-service/>
       </div>
 
+      <router-outlet></router-outlet>
   `,
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
