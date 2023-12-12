@@ -1,6 +1,6 @@
 import {Injectable, signal} from '@angular/core';
-import {BehaviorSubject, catchError, Observable, shareReplay, tap, throwError} from "rxjs";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
 export interface ITask {
@@ -25,9 +25,11 @@ export class ApiService {
    return this.#setTaskList.asReadonly();
   }
   public httpTaskList$(): Observable<ITask[]>{
+    const headers = new HttpHeaders().set('full-stack-life', 'dev');
+    const params = new HttpParams().set('page', '1');
+
     this.#setTaskList.set(null);
-    return this._http.get<ITask[]>(this.#url()).pipe(
-      shareReplay(),
+    return this._http.get<ITask[]>(this.#url(), { headers, params }).pipe(
       tap(res => this.#setTaskList.set(res))
     )
   }
@@ -45,7 +47,6 @@ export class ApiService {
     this.#setTaskId.set(null);
     this.#setTaskIdError.set(null);
     return this._http.get<ITask>(`${this.#url()}/${id}`).pipe(
-      shareReplay(),
       tap(res => this.#setTaskId.set(res)),
       catchError((error: HttpErrorResponse) => {
         this.#setTaskIdError.set(error.error.message)
@@ -55,16 +56,16 @@ export class ApiService {
   }
 
   public httpTaskCreate$(title: string): Observable<ITask>{
-    return this._http.post<ITask>(this.#url(), { title }).pipe(shareReplay());
+    return this._http.post<ITask>(this.#url(), { title }).pipe();
   }
 
   public httpTaskUpdate$(id: string,title: string): Observable<ITask>{
     return this._http.patch<ITask>(`${this.#url()}/${id}`, { title })
-      .pipe(shareReplay());
+      .pipe();
   }
 
   public httpTaskDelete$(id: string): Observable<void>{
     return this._http.delete<void>(`${this.#url()}/${id}`, { })
-      .pipe(shareReplay());
+      .pipe();
   }
 }
