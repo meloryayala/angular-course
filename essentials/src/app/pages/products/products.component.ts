@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, signal} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-products',
@@ -9,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrl: './products.component.scss'
 })
 export default class ProductsComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
   }
 
   public getId = signal<string | null>(null)
@@ -40,6 +40,7 @@ export default class ProductsComponent implements OnInit {
       }
     })
 
-
+    //ROUTER NAVIGATE
+    setTimeout(() => this.router.navigate(['/about']), 3000);
   }
 }
