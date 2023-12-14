@@ -40,12 +40,19 @@ input {
     transform: translateY(-0.075em);
     &.checked {
       background-color: $done-color;
+      border: none;
+      background-image: url("../../../../../assets/icons/check-solid.svg");
+      background-repeat: no-repeat;
+      background-position: center;
     }
   }
 
   &[type="text"] {
     border: none;
     background: none;
+    &.checked {
+      text-decoration: line-through;
+    }
   }
 }
 

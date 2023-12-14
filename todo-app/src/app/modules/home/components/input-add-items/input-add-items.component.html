@@ -1,8 +1,14 @@
 <div class="add-item-container">
     <label>Add Task</label>
   <div class="add-task-wrapper">
-    <input type="text">
-    <button class="add-task-button">
+    <input
+      type="text"
+      [(ngModel)]="item"
+      (keyup.enter)="addItem()"
+    >
+    <button
+      (click)="addItem()"
+      class="add-task-button">
      Add task
     </button>
   </div>

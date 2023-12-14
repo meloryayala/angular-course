@@ -6,6 +6,7 @@ import { InputAddItemsComponent } from './components/input-add-items/input-add-i
 import { ListComponent } from './components/list/list.component';
 
 import { HomeComponent } from './pages/home/home.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -18,7 +19,8 @@ import { HomeComponent } from './pages/home/home.component';
     HomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class HomeModule { }

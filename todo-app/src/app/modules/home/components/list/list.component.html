@@ -1,24 +1,27 @@
-<section>
-  <app-input-add-items></app-input-add-items>
-  <ul>
-    <li>
+<section [ngClass]="{'blank': !taskList.length}">
+  <app-input-add-items (emmitItem)="setEmitItem($event)"></app-input-add-items>
+  <ul *ngIf="taskList.length">
+    <li *ngFor="let item of taskList; let i = index">
       <div class="input-container">
-        <input type="checkbox">
-        <input type="text" placeholder="Type a task">
+        <input
+          type="checkbox"
+          [(ngModel)]="item.checked"
+          [ngClass]="{'checked': item.checked}"
+        >
+        <input
+          type="text"
+          placeholder="Type a task"
+          [(ngModel)]="item.task"
+          [ngClass]="{'checked': item.checked}"
+        >
       </div>
-      <button class="remove">
-        <img src="assets/icons/trash.svg" alt="Delete icon">
-      </button>
-    </li>
-    <li>
-      <div class="input-container">
-        <input type="checkbox">
-        <input type="text" placeholder="Type a task">
-      </div>
-      <button class="remove">
+      <button (click)="deleteItem(i)" class="remove">
         <img src="assets/icons/trash.svg" alt="Delete icon">
       </button>
     </li>
   </ul>
 </section>
-<app-button-delete-all></app-button-delete-all>
+<app-button-delete-all
+  *ngIf="taskList.length"
+  (click)="deleteAll()"
+></app-button-delete-all>
