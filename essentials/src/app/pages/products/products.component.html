@@ -2,3 +2,11 @@
 
 <p>Param with signal and with Input component binding: <strong>{{ getId() }}</strong></p>
 <p>Param older versions: <strong>{{ paramId }} </strong></p>
+
+<h4>Form</h4>
+<form [formGroup]="form">
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+</form>

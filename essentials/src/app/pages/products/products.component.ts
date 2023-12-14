@@ -1,10 +1,13 @@
 import {Component, Input, OnInit, signal} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule
+  ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -20,6 +23,10 @@ export default class ProductsComponent implements OnInit {
   }
 
   public paramId: string = '';
+  public form = new FormGroup({
+    name: new FormControl(null, [Validators.required])
+  });
+
   ngOnInit() : void{
     //URl PARAMS
     //Recover with snapshot
@@ -41,6 +48,6 @@ export default class ProductsComponent implements OnInit {
     })
 
     //ROUTER NAVIGATE
-    setTimeout(() => this.router.navigate(['/about']), 3000);
+    // setTimeout(() => this.router.navigate(['/about']), 3000);
   }
 }
