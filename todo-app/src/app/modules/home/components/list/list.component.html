@@ -1,13 +1,24 @@
 <section>
+  <app-input-add-items></app-input-add-items>
   <ul>
     <li>
-      <input type="checkbox">
-      <input type="text">
-      <button>
-        <img src="" alt="Delete icon">
+      <div class="input-container">
+        <input type="checkbox">
+        <input type="text" placeholder="Type a task">
+      </div>
+      <button class="remove">
+        <img src="assets/icons/trash.svg" alt="Delete icon">
+      </button>
+    </li>
+    <li>
+      <div class="input-container">
+        <input type="checkbox">
+        <input type="text" placeholder="Type a task">
+      </div>
+      <button class="remove">
+        <img src="assets/icons/trash.svg" alt="Delete icon">
       </button>
     </li>
   </ul>
 </section>
-<app-input-add-items></app-input-add-items>
 <app-button-delete-all></app-button-delete-all>

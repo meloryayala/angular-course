@@ -3,23 +3,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 * {
-margin: 0;
-padding: 0;
-font-family: Inter,sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
   font-weight: 400;
 }
 
 body {
   background: $primary-background-color;
   color: $primary-text-color;
+  caret-color: $primary-text-color;
+}
+
+textarea:focus, input, button {
+  outline: none;
+  color: $secondary-text-color;
+}
+
+button {
+  cursor: pointer;
 }
 
 .container {
-  margin: 0 30vw 0 30vw;
+  margin: 4vh 30vw 4vh 30vw;
 }
 
 @media (max-width: 1024px) {
   .container {
-    margin: 0 15vw 0 15vw;
+    margin: 3vh 15vw 3vh 15vw;
   }
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  padding: 16px;
+  border-radius: 8px;
+  border: none;
+  color: $primary-text-color;
 }

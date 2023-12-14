@@ -1,0 +1,27 @@
+@import "./../../../../../dist/scss/variables";
+
+.add-item-container {
+  margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-task-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+}
+
+input {
+  padding: 16px;
+  border: 2px solid $light-background-color;
+  border-radius: 8px;
+  width: 100%;
+  background: none;
+}
+
+button {
+  background-color: $secondary-color;
+}
