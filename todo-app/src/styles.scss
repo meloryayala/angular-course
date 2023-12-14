@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./dist/scss/variables";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+margin: 0;
+padding: 0;
+font-family: Inter,sans-serif;
+  font-weight: 400;
+}
+
+body {
+  background: $primary-background-color;
+  color: $primary-text-color;
+}
+
+.container {
+  margin: 0 30vw 0 30vw;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    margin: 0 15vw 0 15vw;
+  }
+}
