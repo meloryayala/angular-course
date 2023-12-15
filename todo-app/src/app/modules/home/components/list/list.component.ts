@@ -7,14 +7,14 @@ import {TaskList} from "../../model/task-list";
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements DoCheck {
-  public taskList: Array<TaskList> = [];
+  public taskList: Array<TaskList> = JSON.parse(localStorage.getItem("list") || "[]");
 
   ngDoCheck() {
-    this.taskList.sort((first, last) => Number(first.checked) - Number(last.checked));
+    this.setLocalStorage();
   }
 
   public setEmitItem(event: string) {
-    this.taskList.push({ task: event, checked: false })
+    this.taskList.unshift({ task: event, checked: false });
   }
 
   public deleteItem(event: number) {
@@ -25,6 +25,22 @@ export class ListComponent implements DoCheck {
     const confirmation = confirm("Are you sure to delete all tasks?");
     if (confirmation) {
       this.taskList = [];
+    }
+  }
+
+  public validationEmptyInput(item: string, index: number) {
+    if (!item.length) {
+      const confirmation = confirm("The task is empty, do you want to delete?");
+      if (confirmation) {
+        this.deleteItem(index);
+      }
+    }
+  }
+
+  public setLocalStorage() {
+    if (this.taskList) {
+      this.taskList.sort((first, last) => Number(first.checked) - Number(last.checked));
+      localStorage.setItem("list", JSON.stringify(this.taskList))
     }
   }
 }

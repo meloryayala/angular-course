@@ -13,6 +13,7 @@
           placeholder="Type a task"
           [(ngModel)]="item.task"
           [ngClass]="{'checked': item.checked}"
+          (keyup)="validationEmptyInput(item.task, i)"
         >
       </div>
       <button (click)="deleteItem(i)" class="remove">
