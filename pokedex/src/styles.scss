@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@use "./config-scss/reset";
-@use "./config-scss/variables";
-@use "./config-scss/rem-calc";
+@import "./config-scss/reset";
+@import "./config-scss/variables";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400;1,500;1,700&display=swap');
 
 html {
@@ -10,5 +9,11 @@ html {
 }
 
 main {
-  margin: 30vw;
+  margin: 0 25vw;
+}
+
+@media (max-width: 1024px) {
+  main{
+    margin: 0 15vw;
+  }
 }
