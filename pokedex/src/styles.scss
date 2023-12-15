@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@use "./config-scss/reset";
+@use "./config-scss/variables";
+@use "./config-scss/rem-calc";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400;1,500;1,700&display=swap');
+
+html {
+  font-family: Roboto, sans-serif;
+  background: var(--primary-color);
+}
+
+main {
+  margin: 30vw;
+}
